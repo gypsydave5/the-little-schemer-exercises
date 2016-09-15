@@ -12,13 +12,6 @@
   (lambda (n)
     (- n 1)))
 
-(atom? 14) ;; #t
-(add1 67) ;; 68
-(sub1 5) ;; 4
-(zero? 0) ;; #t
-(zero? 1492) ;; #f
-(+ 46 12) ;; 58
-
 (define o+
   (lambda (p q)
     (cond
@@ -145,9 +138,6 @@
                  (rempick (sub1 n) (cdr lat)))))))
 
                                         ; number ;
-(number? 'tomato) ;; #f
-(number? 76)       ;; #t
-
 (define no-nums
   (lambda (lat)
     (cond

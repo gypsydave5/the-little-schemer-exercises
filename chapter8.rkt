@@ -262,6 +262,7 @@
       (cond
        ((even? (car l))
         (evens-only*&co (cdr l) (lambda (newlist p s)
+                                  ;; p is for product... s is for sum
                                   (col (cons (car l) newlist)
                                        (o* p (car l)) s))))
        (else
@@ -273,7 +274,7 @@
       (evens-only*&co (car l) (lambda (al ap as)
                                 ;; a is for car
                                 ;; we move down the car
-                                ;; and at th end of the car... (col '() 1 0)
+                                ;; and at the end of the car... (col '() 1 0)
                                 ;; back up the car
                                 ;; and at the top of the car
                                 (evens-only*&co (cdr l)
@@ -287,7 +288,13 @@
                                                   (col (cons al dl)
                                                        (o* ap dp)
                                                        (o+ as ds))))))))))
+;; col is being executed with
+;; - list of even numbers
+;; - product of all even numbers
+;; - sum of all odd
 
 (define the-last-friend
   (lambda (newl product sum)
     (cons sum (cons product newl))))
+
+(provide (all-defined-out))

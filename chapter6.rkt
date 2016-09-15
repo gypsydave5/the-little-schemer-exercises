@@ -1,4 +1,5 @@
 #lang racket
+
 (require "chapter4.rkt")
 
 ;; Whew...
@@ -100,7 +101,7 @@
      ((eq? (operator-infix nexp) (quote oexp)) (oexp (value (1st-sub-exp-infix nexp))
                                                (value (2nd-sub-exp-infix nexp)))))))
 
-;; The Eigth Commandment
+;; The Eighth Commandment
 ;; Use help functions to abstract from representations.
 
 (define value-v2
@@ -139,15 +140,15 @@
      ((atom? (car l)) (lat? (cdr l)))
      (else #f))))
 
-(edd1 '()) ;; (())
-(zub1 '(() () ())) ;; (() ())
-(sero? '()) ;; #t
-(sero? '(())) ;; #f
-(oo+ '(() () ()) '(() ())) ;; (() () () () ())
+;; (edd1 '()) ;; (())
+;; (zub1 '(() () ())) ;; (() ())
+;; (sero? '()) ;; #t
+;; (sero? '(())) ;; #f
+;; (oo+ '(() () ()) '(() ())) ;; (() () () () ())
 
-(lat? '(1 2 3))
-;; #t
-(lat? '(() () ()))
+;; (lat? '(1 2 3))
+;; ;; #t
+;; (lat? '(() () ()))
 ;; #f
 
 ;;  You must beware of shadows...

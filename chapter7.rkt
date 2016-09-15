@@ -131,7 +131,7 @@
      ((atom? x) #f)
      ((null? x) #f)
      ((null? (cdr x)) #f)
-     ((null? (cdr (cdr x))) #f)
+     ((null? (cdr (cdr x))) #t)
      (else #f))))
 
 (define first
@@ -173,13 +173,14 @@
 
 (define revpair
   (lambda (pair)
-    (buid (second pair) (first pair))))
+    (build (second pair) (first pair))))
 
 (define revrel
   (lambda (rel)
-    ((null? rel) '())
-    (else (cons (revpair (car rel))
-                (revrel (cdr rel))))))
+    (cond
+     ((null? rel) '())
+     (else (cons (revpair (car rel))
+                 (revrel (cdr rel)))))))
 
 (define fullfun?
   (lambda (fun)
@@ -188,3 +189,5 @@
 (define one-to-one?
   (lambda (fun)
     (fun? (revrel fun))))
+
+(provide (all-defined-out))
